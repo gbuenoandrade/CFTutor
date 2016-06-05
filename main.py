@@ -33,14 +33,13 @@ def updateTablesWithUnsolvedProblems(solvedProblems):
             problemIdx = str(problem['index'])
             if(len(problemIdx) > 1 or problemIdx[0] < 'A' or problemIdx[0] > 'E'):
                 problemIdx = 'Other'
-            problemURL = 'http://codeforces.com/contest/' +  str(problem['contestId']) + '/problem/' + str(problem['index'])
+            problemURL = 'http://codeforces.com/problemset/problem/' +  str(problem['contestId']) + '/' + str(problem['index'])
             lists[problemIdx][1].append((problem['name'], problemsStatistics[idx]['solvedCount'], problemURL))
 
     for value in lists.itervalues():
         value[1].sort(key = lambda x : -x[1])
         for item in value[1]:
             value[0].insert(END,item[0] + ' (' + str(item[1]) + ')')
-
 
 def refresh():
     root.config(cursor="wait")
